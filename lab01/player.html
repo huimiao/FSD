@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Lab01 - html5 Video Player</title>
+		<link href="./fontawesome-free-5.9.0-web/css/all.css" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link href="./css/player.css" rel="stylesheet"> 
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-1 col-sm-12">
+				</div>	
+				<div class="col-lg-8 col-sm-12 content">
+					<header class="playerHeader">Lab01 - html5 Video Player</header>
+					<main class="player_window">
+						<video id="player" class="player_window_video">
+							<source/>
+						</video>
+						<div id="subtitles" class="subtitles_line"><span class="subtitles"></span></div>
+					</main>
+					<footer class='playerControlls'>						
+						<div>
+  							<progress id="progressBar" class="progress" value="0" max="100"></progress>
+						</div>
+						<ul id="controll" class="controll">
+							<li id= 'startBtn' disabled="true"><i class="fas fa-play"></i></li>
+							<li id= 'pauseBtn'><i class="fas fa-pause"></i></li>
+							<li id= 'reloadBtn'><i class="fas fa-stop"></i></li>
+							<li id= 'volumeUpBtn'><i class="fas fa-plus"></i></li>
+							<li id= 'volumeDownBtn'><i class="fas fa-minus"></i></li>
+							<li id= 'speakerBtn'><i class="fas fa-volume-up speakerIco"></i></li>
+							<li id= 'likeBtn' class='addNumber'><i class="fas fa-thumbs-up"  style="color: green;"></i><span id='likeNum'>0</span></li>
+							<li id= 'disLikeBtn' class='addNumber'><i class="fas fa-thumbs-down" style="color: red;"></i><span id='disLikeNum'>0</span></li>
+							<li id= 'time_progress' class="time_progress"> <span id="current_time">00:00:00</span>/<span id="total_time">00:00:00</span></li>
+						</ul>
+					</footer>
+				</div>
+				<div class="col-lg-2 col-sm-12 sidebar">					
+					<div id='media-play-list'>
+						<header class="listHeader">Play List</header>
+			            <ul class="list-group play_list_content">
+		                    <li class="list_item" onclick='loadVideo(event, "./video/2.mp4")'><i class="fas fa-play"></i> Test Video 1</li>
+		                    <li class="list_item" onclick='loadVideo(event, "./video/3.mp4")'><i class="fas fa-play"></i> Test Video 2</li>
+		                    <li class="list_item" onclick='loadVideo(event, "./video/1.mp4")'><i class="fas fa-play"></i> Test Video 3</li>
+                  		</ul>
+					</div>
+				</div>
+				<div class="col-lg-1 col-sm-12">
+				</div>	
+			</div>
+		</div>
+
+		<script src="./js/player.js" type="text/javascript"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</body>
+</html>

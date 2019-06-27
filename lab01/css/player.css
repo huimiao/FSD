@@ -1,0 +1,170 @@
+body{
+    background: #212529;
+}
+
+li{
+    display: inline-block;				
+}
+
+.controll li{
+    float: left;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+main{
+    border: none; 
+}
+
+li:hover{
+    background: gray;
+    border-radius: 0px;
+    color: #f03e3e;
+}
+
+.progress{
+    float: left;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    border: none;
+    border-radius: 0px;
+}			
+
+.progress::-webkit-progress-bar{
+     background-color:#d7d7d7;
+}
+
+progress::-webkit-progress-value{
+     background-color:green;
+}
+
+.container-fluid{
+    margin: 3% auto;
+}
+
+.disabled{
+    color: gray;
+    pointer-events: none;
+}
+
+.playerHeader{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: url(../images/playheader.jpg) repeat-x;
+    border-radius: 5px 5px 0px 0px;
+    text-align: center;
+}
+
+.listHeader{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: url(../images/playheader.jpg) repeat-x;
+    border-radius: 5px 5px 0px 0px;
+    text-align: center;
+}
+
+.player_window{
+    position:relative;
+    width: 100%;
+    max-height: 550px;
+}
+
+.player_window_video{
+    float: left;
+    width: 100%;
+    object-fit: fill;
+    max-height: 550px;
+    margin-bottom: 0px; 
+}
+
+.playerControlls{
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 20px; 
+    width: 100%;
+    background: #f1f2f2;
+    font-size: 2em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.time_progress{
+    float: right !important;
+    color: 	#212529;
+    font-size: 24px;
+    float: right;			
+    margin-right: 160px;
+    pointer-events: none;
+}
+
+.play_list_content{				
+    background:  #f1f2f2;
+}
+
+.sidebar{					
+    background:  #f1f2f2;
+    max-height: 670px;
+    padding-right: 0px;
+    padding-left: 0px;
+    border-radius: 5px;	
+    margin-bottom: 20px; 		
+}
+
+.playerControlHidden{
+    display: none;
+}
+
+.content{				
+    max-height: 670px;
+}
+
+.play_list_content li{
+    padding-left: 5px;
+}
+
+.active_list{
+    background: #fd7e14;
+    color: #fff;
+}
+
+.list_item i{
+    position: relative;
+    top:-2px;
+    font-size: 10px;
+    padding: 0 10px;
+}
+
+.controll .addNumber{				
+    width: 80px;
+}
+
+.controll .addNumber span{
+    position: relative;
+    top: -15px;
+    padding-left: 10px;				
+    font-size: 15px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.subtitles_line{
+    position: absolute;
+    height: 20px;
+    width: 100%;
+    left: 15px;
+    bottom: 100px;
+    z-index: 10;
+    text-align: center;   
+    pointer-events: none;
+}
+
+.subtitles{
+    background-color:rgba(255,255,255,0.01);
+    color: yellowgreen;
+    pointer-events: none;
+}
