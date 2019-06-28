@@ -22,26 +22,25 @@ class Score {
 	}
 }
 
-
 document.addEventListener("DOMContentLoaded", () => { initialiseMediaPlayer(); }, false);
 
 initialiseMediaPlayer = () => {
-	videoPlayer = document.getElementById('player');
-	startBtn = document.getElementById('startBtn');
-	pauseBtn = document.getElementById('pauseBtn');
-	reloadBtn = document.getElementById('reloadBtn');
-	volumeUpBtn = document.getElementById('volumeUpBtn');
-	volumeDownBtn = document.getElementById('volumeDownBtn');
-	speakerBtn = document.getElementById('speakerBtn');
-	likeBtn = document.getElementById('likeBtn');
-	disLikeBtn = document.getElementById('disLikeBtn');
-	speakerIco = document.getElementsByClassName('speakerIco')[0];
-	progressBar = document.getElementById('progressBar');
-	currentTimeLable = document.getElementById('current_time');
-	totalTimeLable = document.getElementById('total_time');
-	likeLable = document.getElementById('likeNum');
-	disLikeLable = document.getElementById('disLikeNum');
-	playList = document.getElementsByClassName('list_item');
+	videoPlayer = document.querySelector('#player');
+	startBtn = document.querySelector('#startBtn');
+	pauseBtn = document.querySelector('#pauseBtn');
+	reloadBtn = document.querySelector('#reloadBtn');
+	volumeUpBtn = document.querySelector('#volumeUpBtn');
+	volumeDownBtn = document.querySelector('#volumeDownBtn');
+	speakerBtn = document.querySelector('#speakerBtn');
+	likeBtn = document.querySelector('#likeBtn');
+	disLikeBtn = document.querySelector('#disLikeBtn');
+	speakerIco = document.querySelector('#speakerBtn .speakerIco');
+	progressBar = document.querySelector('#progressBar');
+	currentTimeLable = document.querySelector('#current_time');
+	totalTimeLable = document.querySelector('#total_time');
+	likeLable = document.querySelector('#likeNum');
+	disLikeLable = document.querySelector('#disLikeNum');
+	playList = document.querySelectorAll('.list_item');
 
 	startBtn.addEventListener('click', startToPlay);
 	pauseBtn.addEventListener('click', pausePlay);

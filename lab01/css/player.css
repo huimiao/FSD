@@ -2,8 +2,9 @@ body{
     background: #212529;
 }
 
-li{
-    display: inline-block;				
+
+ul, li{
+    list-style: none;			
 }
 
 .controll li{
@@ -30,7 +31,7 @@ li:hover{
     height: 20px;
     line-height: 20px;
     border: none;
-    border-radius: 0px;
+    border-radius: 0px; 
 }			
 
 .progress::-webkit-progress-bar{
@@ -93,12 +94,12 @@ progress::-webkit-progress-value{
     border-bottom-right-radius: 5px;
 }
 
-.time_progress{
-    float: right !important;
+#time_progress{
+    right: 2px;
+    bottom: 2px;
     color: 	#212529;
-    font-size: 24px;
-    float: right;			
-    margin-right: 160px;
+    float: right;
+    margin-right: 240px;
     pointer-events: none;
 }
 
