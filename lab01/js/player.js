@@ -14,6 +14,7 @@ var totalTimeLable;
 var likeLable;
 var disLikeLable;
 var playList;
+var playTip 
 
 class Score {
 	constructor(likeScore, disLikeScore) {
@@ -41,6 +42,7 @@ initialiseMediaPlayer = () => {
 	likeLable = document.querySelector('#likeNum');
 	disLikeLable = document.querySelector('#disLikeNum');
 	playList = document.querySelectorAll('.list_item');
+	playTip = document.querySelector("#play-tip");
 
 	startBtn.addEventListener('click', startToPlay);
 	pauseBtn.addEventListener('click', pausePlay);
@@ -48,11 +50,13 @@ initialiseMediaPlayer = () => {
 	volumeUpBtn.addEventListener('click', () => { changeVolume('+') });
 	volumeDownBtn.addEventListener('click', () => { changeVolume('-') });
 	speakerBtn.addEventListener('click', toggleSpeaker);
+	videoPlayer.addEventListener('click', playContrl);
 	videoPlayer.addEventListener('timeupdate', updateProgress);
 	videoPlayer.addEventListener('timeupdate', saveCurrentTimeToDB);
 	videoPlayer.addEventListener('canplay', () => updateTime(totalTimeLable, videoPlayer.duration));
 	videoPlayer.addEventListener('ended', resetPlayer);
 	progressBar.addEventListener('click', goToSpecifiedTime);
+	playTip.addEventListener('click', playContrl);
 	likeBtn.addEventListener('click', () => {
 		let score = saveScoreToDB(videoPlayer.src + "score", 'like');
 		updateLikeDisLikeLable(likeLable, score.likeScore);
@@ -65,15 +69,27 @@ initialiseMediaPlayer = () => {
 	triggerFirstLoad(playList);
 }
 
+playContrl = () => {
+	let status = videoPlayer.paused;
+	
+	if(status){
+		startToPlay();
+	}else{
+		pausePlay();
+	}
+}
+
 startToPlay = () => {
 	addStyle(startBtn, 'disabled');
 	removeStyle(pauseBtn, 'disabled');
+	addStyle(playTip, 'playerControlHidden');
 	videoPlayer.play();
 }
 
 pausePlay = () => {
 	removeStyle(startBtn, 'disabled');
 	addStyle(pauseBtn, 'disabled');
+	removeStyle(playTip, 'playerControlHidden');
 	videoPlayer.pause();
 }
 
@@ -163,12 +179,17 @@ loadVideo = (e, path) => {
 
 	Array.from(listEl)
 		.forEach(
-			element => removeStyle(element, 'active_list')
+			element => {
+				removeStyle(element, 'active_list');
+				removeStyle(element.lastElementChild, 'animation');
+			}
 		);
 
 	resetPlayer();
 
-	addStyle(getSelectedListItem(e.target), 'active_list');
+	var selectedList = getSelectedListItem(e.target);
+	addStyle(selectedList, 'active_list');
+	addStyle(selectedList.lastElementChild, 'animation');
 	videoPlayer.src = path;
 	videoPlayer.load();
 
@@ -186,6 +207,7 @@ getSelectedListItem = el => {
 	}
 }
 
+
 goToSpecifiedTime = e => {
 	let to = e.offsetX;
 	let width = e.target.offsetWidth;
@@ -201,6 +223,7 @@ resetPlayer = () => {
 	videoPlayer.currentTime = 0;
 	removeStyle(startBtn, 'disabled');
 	removeStyle(pauseBtn, 'disabled');
+	removeStyle(playTip, 'playerControlHidden');
 	addStyle(pauseBtn, 'disabled');
 }
 
