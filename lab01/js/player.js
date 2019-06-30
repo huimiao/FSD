@@ -182,6 +182,7 @@ loadVideo = (e, path) => {
 			element => {
 				removeStyle(element, 'active_list');
 				removeStyle(element.lastElementChild, 'animation');
+				removeStyle(element.lastElementChild.lastElementChild, 'full_string');
 			}
 		);
 
@@ -190,6 +191,7 @@ loadVideo = (e, path) => {
 	var selectedList = getSelectedListItem(e.target);
 	addStyle(selectedList, 'active_list');
 	addStyle(selectedList.lastElementChild, 'animation');
+	addStyle(selectedList.lastElementChild.lastElementChild, 'full_string');
 	videoPlayer.src = path;
 	videoPlayer.load();
 

@@ -18,8 +18,7 @@ ul, li {
 
 .player-content {
   height: 100%;
-  min-height: 100%;
-  max-height: 100%;
+  overflow: hidden;
 }
 
 .player-content-window{  
@@ -29,6 +28,11 @@ ul, li {
 @media (max-width: 700px){
   .player-content {
     min-width: 650px;
+  }
+}
+
+@media (max-width: 992px){
+  .player-content {
     margin-bottom: 10px;
   }
 }
@@ -43,13 +47,13 @@ ul, li {
 
 .player_window {
   width: 100%;
-  height: 82%;
 }
 
 .player_window_video {
   width: 100%;
   height: 100%;
   object-fit: fill;
+  margin-bottom: -10px;
 }
 
 .playerControlls {
@@ -59,12 +63,15 @@ ul, li {
   border-radius: 0 0 5px 5px;
 }
 
+/*progress style, https://www.cnblogs.com/bloom-in-dream/p/6885285.html*/
 .progress {
   width: 100%;
-  height: 100%;
+  height: 10px;
+  padding-top: 4px;
   border: none;
   border-radius: 0px;
-  margin: 0;
+  background: #d7d7d7;
+  color: green;
 }
 
 .progress::-webkit-progress-bar {
@@ -118,6 +125,7 @@ progress::-webkit-progress-value {
 .progress2 {
   height: 10px;
   margin: 0;
+  overflow: hidden;
 }
 
 li:hover {
@@ -131,12 +139,8 @@ li:hover {
   pointer-events: none;
 }
 
-.media-play-list {
-  margin-top: 5%;
-  background: #f1f2f2;
+.player_list {
   height: 100%;
-  border-radius: 5px;
-  margin-bottom: 20px;
 }
 
 .play_list_content {
@@ -146,8 +150,25 @@ li:hover {
   overflow: hidden;
 }
 
+.player-content2{
+  padding-bottom: 80px;
+}
+
 .play_list_content li {
+  width: 100%;
+  height: 30px;
   padding-left: 5px;
+  overflow: hidden;
+}
+
+/*css span with no-newline, https://www.cnblogs.com/LXJ-CHEER/p/4713298.html*/
+.play_list_content li span {
+  white-space: nowrap;  /*force span no new line*/
+  display: inline-block;  /*span as block*/
+  width: 75%;  
+  overflow: hidden;  
+  text-overflow: ellipsis;  /*all passed the longest as ...*/
+  line-height: 1.0;  
 }
 
 .active_list {
@@ -155,11 +176,9 @@ li:hover {
   color: #fff;
 }
 
-.animation{
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: 10s wordsLoop linear infinite normal;
+.play_list_content li .full_string{
+  overflow: visible;
+  text-overflow: inherit;
 }
 
 .list_item i {
@@ -187,10 +206,17 @@ li:hover {
   cursor: pointer;
 }
 
+/*css text roll, https://blog.csdn.net/qq_30449567/article/details/80417304*/
+.animation{
+  display: inline-block;
+  overflow: initial;
+  animation: 10s wordsLoop linear infinite normal;
+}
+
 @keyframes wordsLoop {
   0% {
-      transform: translateX(100px);
-      -webkit-transform: translateX(100px);
+      transform: translateX(100%);
+      -webkit-transform: translateX(100%);
   }
   100% {
       transform: translateX(-100%);
@@ -200,8 +226,8 @@ li:hover {
 
 @-webkit-keyframes wordsLoop {
   0% {
-      transform: translateX(100px);
-      -webkit-transform: translateX(100px);
+      transform: translateX(100%);
+      -webkit-transform: translateX(100%);
   }
   100% {
       transform: translateX(-100%);
