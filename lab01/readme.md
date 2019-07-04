@@ -1,3 +1,7 @@
+#Check point
+
+## Assigned activities
+
 S.no |  Activity   |    Check           
 ---|---|---
 1 | By default, play button is enabled and pause button is disabled | ==**Done**==
@@ -20,10 +24,11 @@ S.no |  Activity   |    Check
 18 | New Feature other than documented | ==**Done**==
 
 ## New Feature other than documented
+
 1. Click the progress bar, video will play start from there
 2. When click the video window, video will be stopped or pause/stopped, with styled play button
 3. Better appearence
-4. Playing list will roll from right to left
+4. Playing list will roll from right to left on the selected video
 5. Selected playing list item is highted
 6. Hover the play list and buttons will be highted.
 7. Show the video play time/total time
