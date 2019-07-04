@@ -26,3 +26,5 @@ S.no |  Activity   |    Check
 4. Playing list will roll from right to left
 5. Selected playing list item is highted
 6. Hover the play list and buttons will be highted.
+7. Show the video play time/total time
+8. Video will play from where the last place where leaved
