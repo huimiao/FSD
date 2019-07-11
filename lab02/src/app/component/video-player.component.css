@@ -1,0 +1,33 @@
+@media (max-width: 992px){
+  .container-fluid {
+    padding-top: 0;
+  }
+}
+
+.player-content {
+  height: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 700px){
+  .player-content {
+    min-width: 650px;
+  }
+}
+
+@media (max-width: 992px){
+  .player-content {
+    margin-bottom: 10px;
+  }
+}
+
+.player-content-window{
+  min-width: 650px;
+}
+
+.disabled {
+  color: gray;
+  pointer-events: none;
+}
+
+

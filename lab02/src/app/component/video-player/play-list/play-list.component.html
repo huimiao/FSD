@@ -1,0 +1,14 @@
+<common-header [title]="'Play List'"></common-header>
+<main class="player_list">
+  <ul class="list-group play_list_content">
+    <ng-container *ngFor="let item of playList;">
+      <li *ngIf="item.approved === 1" [ngClass]="item.title === selectedItem ? 'active_list': ''" (click)="loadVideo(item.title)">
+        <div [ngClass]="item.title === selectedItem ? 'animation': ''">
+          <fa-icon [icon]="['fas', 'play']"></fa-icon>
+          <span [ngClass]="item.title === selectedItem ? 'full_string': ''">{{item.title}}</span>
+        </div>
+      </li>
+    </ng-container>
+  </ul>
+</main>
+<footer class='bottom-sppliter'></footer>

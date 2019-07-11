@@ -1,0 +1,7 @@
+<common-header [title]="'Lab02 - html5 Video Player'"></common-header>
+<main class="player_window">
+  <video #playerWindow id="player" class="player_window_video" [src]="playingVideo">
+  </video>
+  <div #playTip id="play-tip" [className]="playerWindow.paused?'play-tip':'hidden'"><fa-icon [icon]="['fas', 'play']"></fa-icon></div>
+  <div class="start" [ngClass]="playingVideo === '/'?'':'hidden'">Choose one from right side</div>
+</main>

@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-1 col-md-12"></div>
+    <div class="col-lg-8 col-md-12">
+      <div class="player-content player-content-window">
+        <player #player (playCompleted)="playCompletedHandler($event)" (timeUpdated)="timeUpdatedHandler($event)"
+          (loadedmetadataLoaded)="loadedmetadataLoadedHandler($event)"
+          (clickOnVideoWindow)="clickOnVideoWindowHandler($event)">
+        </player>
+        <player-controls #playerControl (startToPlayClicked)="startToPlayClickedHandler($event)"
+          (pauseToPlayClicked)="pauseToPlayClickedHandler($event)"
+          (stopToPlayClicked)="stopToPlayClickedHandler($event)"
+          (volumeChangeClicked)="volumeChangeClickedHandler($event)"
+          (toggleSpeakerClicked)="toggleSpeakerClickedHandler($event)"
+          (progressBarClicked)="progressBarClickedHandler($event)">
+        </player-controls>
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-12">
+      <div class="player-content">
+        <play-list #playList style="height: 100%" (playItemSelected)="playItemSelectedHandler($event)"></play-list>
+      </div>
+    </div>
+    <div class="col-lg-1 col-md-12"></div>
+  </div>
+</div>

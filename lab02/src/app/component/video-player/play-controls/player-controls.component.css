@@ -1,0 +1,66 @@
+.playerControls {
+  width: 100%;
+  height: 50px;
+  background: #f1f2f2;
+  border-radius: 0 0 5px 5px;
+}
+
+/*progress style, https://www.cnblogs.com/bloom-in-dream/p/6885285.html*/
+.progress {
+  width: 100%;
+  height: 10px;
+  border: none;
+  border-radius: 0px;
+  background: #d7d7d7;
+  color: green;
+}
+
+.progress::-webkit-progress-bar {
+  background-color: #d7d7d7;
+}
+
+progress::-webkit-progress-value {
+  background-color: green;
+}
+
+.controll ul {
+  height: 100%;
+  width: 100%;
+}
+
+.controll li {
+  float: left;
+  width: 40px;
+  height: 100%;
+  line-height: 41px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.controll li fa-icon + span{
+  position: absolute;
+  margin-top: -3px;
+  margin-left: 5px;
+  font-size: 1rem;
+}
+
+.controll li:last-child {
+    float: right;
+    width: 270px;
+    color: #212529;
+    pointer-events: none;
+  }
+
+@media (max-width: 992px){
+    .controll li {
+        height: 100%;
+        margin-right: 10px;
+        font-size: 1.5rem;
+        width: 40px;
+      }
+}
+
+.disabled {
+  color: gray;
+  pointer-events: none;
+}

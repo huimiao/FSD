@@ -1,0 +1,19 @@
+.box {
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: none;
+  border-color: gray;
+  box-shadow: 0 0 0px rgba(101, 116, 116, 0.4);
+}
+
+fa-icon+span{
+  margin-left: 5px;
+}
+
+input {
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1.5px solid grey;
+}

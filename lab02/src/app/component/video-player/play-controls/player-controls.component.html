@@ -1,0 +1,36 @@
+<footer class='playerControls'>
+  <div class="progress2">
+    <progress #progressBar id="progressBar" (click)="goToSpecifiedTime($event);" class="progress" value="0"
+      max="100"></progress>
+  </div>
+  <div id="controll" class="controll">
+    <ul>
+      <li id='startBtn' (click)="startToPlay()" [className]="stopped ? '':'disabled'">
+        <fa-icon [icon]="['fas', 'play']"></fa-icon>
+      </li>
+      <li id='pauseBtn' (click)="pausePlay()" [className]="stopped ? 'disabled':''">
+        <fa-icon [icon]="['fas', 'pause']"></fa-icon>
+      </li>
+      <li id='reloadBtn' (click)="stopPlay()">
+        <fa-icon [icon]="['fas', 'stop']"></fa-icon>
+      </li>
+      <li id='volumeUpBtn' (click)="changeVolume('+')">
+        <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+      </li>
+      <li id='volumeDownBtn' (click)="changeVolume('-')">
+        <fa-icon [icon]="['fas', 'minus']"></fa-icon>
+      </li>
+      <li id='speakerBtn' (click)="toggleSpeaker()">
+        <fa-icon [icon]="muted?['fas', 'volume-mute'] : ['fas', 'volume-up']"></fa-icon>
+      </li>
+      <li id='likeBtn' class='addNumber' style="margin-right: 10px;">
+        <fa-icon [icon]="['fas', 'thumbs-up']" style="color: green;"></fa-icon><span #likeNum id='likeNum'>0</span>
+      </li>
+      <li id='disLikeBtn' class='addNumber' style="margin-right: 10px;">
+        <fa-icon [icon]="['fas', 'thumbs-down']" style="color: red;"></fa-icon><span #disLikeNum id='disLikeNum'>0</span>
+      </li>
+      <li id='time_progress' class="time_progress"> <span #currentTime id="current_time">00:00:00</span>/<span
+          #totalTime id="total_time">00:00:00</span></li>
+    </ul>
+  </div>
+</footer>

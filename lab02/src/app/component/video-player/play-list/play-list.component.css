@@ -1,0 +1,109 @@
+ul li{
+  display: block
+}
+
+.player_list {
+  height: calc(100% - 30px - 50px);
+}
+
+.play_list_content {
+  height: 100%;
+  width: 100%;
+  background: #f1f2f2;
+}
+
+.play_list_content li {
+  width: 100%;
+  height: 30px;
+  padding-left: 5px;
+  overflow: hidden;
+}
+
+.play_list_content li fa-icon {
+  position: relative;
+  font-size: 10px;
+  padding: 0 10px;
+  top: -3px;
+}
+
+/*css span with no-newline, https://www.cnblogs.com/LXJ-CHEER/p/4713298.html*/
+.play_list_content li span {
+  white-space: nowrap;  /*force span no new line*/
+  display: inline-block;  /*span as block*/
+  width: 75%;
+  overflow: hidden;
+  text-overflow: ellipsis;  /*all passed the longest as ...*/
+  line-height: 1.0;
+}
+
+.active_list {
+  background: #fd7e14;
+  color: #fff;
+}
+
+.play_list_content li .full_string{
+  overflow: visible;
+  text-overflow: inherit;
+}
+
+.list_item i {
+  position: relative;
+  font-size: 10px;
+  padding: 0 10px;
+}
+
+.play-tip{
+  position: absolute;
+	width: 110px;
+	height: 110px;
+	text-align: center;
+	line-height: 110px;
+	top: 48%;
+  left: 50%;
+  padding-left: 15px;
+	margin-left: -55px;
+	margin-top: -70px;
+	background: red;
+	font-size: 60px;
+	border: 3px solid #FFFFFF;
+	border-radius: 50%;
+	color: #fff;
+  cursor: pointer;
+}
+
+/*css text roll, https://blog.csdn.net/qq_30449567/article/details/80417304*/
+.animation{
+  display: inline-block;
+  overflow: initial;
+  margin-left: 20px;
+  animation: 10s wordsLoop linear infinite normal;
+}
+
+@keyframes wordsLoop {
+  0% {
+      transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes wordsLoop {
+  0% {
+      transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+  }
+}
+
+.bottom-sppliter{
+  width: 100%;
+  height: 50px;
+  background: #f1f2f2;
+  border-radius: 0 0 5px 5px;
+}
