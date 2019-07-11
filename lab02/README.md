@@ -74,12 +74,12 @@ S.no	|	Activity	|	Check	|	Associate Remark
 10. Angular navigation is used
 
 
-![1](https://github.com/huimiao/FSD/blob/master/lab02/screenshot/1.jpg)
+![1](https://github.com/huimiao/FSD/raw/master/lab02/screenshot/1.jpg)
 
-![2](https://github.com/huimiao/FSD/blob/master/lab02/screenshot/2.jpg)
+![2](https://github.com/huimiao/FSD/raw/master/lab02/screenshot/2.jpg)
 
-![3](https://github.com/huimiao/FSD/blob/master/lab02/screenshot/3.jpg)
+![3](https://github.com/huimiao/FSD/raw/master/lab02/screenshot/3.jpg)
 
-![4](https://github.com/huimiao/FSD/blob/master/lab02/screenshot/4.jpg)
+![4](https://github.com/huimiao/FSD/raw/master/lab02/screenshot/4.jpg)
 
-![5](https://github.com/huimiao/FSD/blob/master/lab02/screenshot/5.jpg)
+![5](https://github.com/huimiao/FSD/raw/master/lab02/screenshot/5.jpg)
