@@ -17,7 +17,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text bg-success text-white" id="basic-addon1">youtube URL</span>
         </div>
-        <input id="url" class="form-control" placeholder="Youtube url" formControlName="url">
+        <input id="url" type="url" class="form-control" placeholder="Youtube url" formControlName="url">
       </div>
     </form>
   </div>
@@ -59,7 +59,7 @@
 
   <ng-template #urlError>
     <b>{{newUrl.value}}</b>
-    <div *ngIf="newUrl.invalid && newUrl.touched">
+    <div *ngIf="newUrl.invalid && (newUrl.dirty || newUrl.touched)">
       <small class="text-danger" *ngIf="newUrl.hasError('required')">URL is
         required.</small>
       <small class="text-danger" *ngIf="newUrl.hasError('pattern')">URL is
@@ -69,7 +69,7 @@
 
   <ng-template #e_urlError>
     <b>{{eUrl.value}}</b>
-    <div *ngIf="eUrl.invalid && eUrl.touched">
+    <div *ngIf="eUrl.invalid && (eUrl.dirty || eUrl.touched)">
       <small class="text-danger" *ngIf="eUrl.hasError('required')">URL is
         required.</small>
       <small class="text-danger" *ngIf="eUrl.hasError('pattern')">URL is
@@ -103,7 +103,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text bg-success text-white" id="basic-addon1">youtube URL</span>
                   </div>
-                  <input id="url" class="form-control" placeholder="Youtube url" formControlName="url"
+                  <input id="url" type="url" class="form-control" placeholder="Youtube url" formControlName="url"
                     autocomplete="off" [class.is-invalid]="newUrl.invalid && newUrl.touched" placement="top"
                     [ngbPopover]="urlError" popoverTitle="Input the video url">
                 </div>

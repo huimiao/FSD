@@ -23,11 +23,11 @@
       <li id='speakerBtn' (click)="toggleSpeaker()">
         <fa-icon [icon]="muted?['fas', 'volume-mute'] : ['fas', 'volume-up']"></fa-icon>
       </li>
-      <li id='likeBtn' class='addNumber' style="margin-right: 10px;">
-        <fa-icon [icon]="['fas', 'thumbs-up']" style="color: green;"></fa-icon><span #likeNum id='likeNum'>0</span>
+      <li id='likeBtn' class='addNumber' style="margin-right: 10px;" (click)="thumbsClickedHandler('like')">
+        <fa-icon [icon]="['fas', 'thumbs-up']" style="color: green;"></fa-icon><span #likeNum id='likeNum'>{{currentScore.likeScore}}</span>
       </li>
-      <li id='disLikeBtn' class='addNumber' style="margin-right: 10px;">
-        <fa-icon [icon]="['fas', 'thumbs-down']" style="color: red;"></fa-icon><span #disLikeNum id='disLikeNum'>0</span>
+      <li id='disLikeBtn' class='addNumber' style="margin-right: 10px;" (click)="thumbsClickedHandler('disLike')">
+        <fa-icon [icon]="['fas', 'thumbs-down']" style="color: red;"></fa-icon><span #disLikeNum id='disLikeNum'>{{currentScore.disLikeScore}}</span>
       </li>
       <li id='time_progress' class="time_progress"> <span #currentTime id="current_time">00:00:00</span>/<span
           #totalTime id="total_time">00:00:00</span></li>

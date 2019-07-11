@@ -17,15 +17,15 @@ export class RestDataSource {
     return this.httpClient.get<PlayItem[]>(this.baseUrl + 'youtube');
   }
 
-  deletePlayItemById(id: string): Observable<Object> {
+  deletePlayItemById(id: string): Observable<object> {
     return this.httpClient.delete(this.baseUrl + 'youtube/' + id);
   }
 
-  updatePlayItem(id: string, item: any): Observable<Object> {
+  updatePlayItem(id: string, item: any): Observable<object> {
     return this.httpClient.patch(this.baseUrl + 'youtube/' + id, item);
   }
 
-  savePlayItem(item: PlayItem): Observable<Object> {
+  savePlayItem(item: PlayItem): Observable<object> {
     return this.httpClient.post(this.baseUrl + 'youtube/', item);
   }
 }

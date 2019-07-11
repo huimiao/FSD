@@ -32,7 +32,7 @@ import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [NgbActiveModal, NgbModal, FormBuilder],
 })
-export class PlayerModule{
+export class PlayerModule {
   constructor() {
     library.add(faPlay);
     library.add(faPause);

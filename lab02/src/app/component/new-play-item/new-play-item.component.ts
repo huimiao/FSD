@@ -18,8 +18,8 @@ export class NewPlayItemComponent implements OnInit {
   selectedItem = '';
 
   constructor(private dataSource: RestDataSource,
-              private fb: FormBuilder,
-              private modalService: NgbModal) {
+    private fb: FormBuilder,
+    private modalService: NgbModal) {
   }
 
   get newTitle(): AbstractControl {
@@ -46,13 +46,17 @@ export class NewPlayItemComponent implements OnInit {
       });
     this.editPlayItemInput = this.fb.group(
       {
-        title: ['', Validators.required],
+        title: [{ value: '', disabled: true }, Validators.required],
         url: [''],
       });
     this.dataSource.getPlayList().subscribe(data => this.playList = data);
   }
 
   save() {
+    if (!this.validate(this.newTitle.value, this.newUrl.value)) {
+      return;
+    }
+
     const item = new PlayItem(
       btoa(this.newTitle.value),
       this.newTitle.value,
@@ -63,6 +67,7 @@ export class NewPlayItemComponent implements OnInit {
       this.playList.push(item);
       this.newTitle.setValue('');
       this.newUrl.setValue('');
+      this.newPlayItemInput.reset();
     });
   }
 
@@ -73,6 +78,10 @@ export class NewPlayItemComponent implements OnInit {
     this.eUrl.setValue(item.url);
 
     this.modalService.open(content).result.then(action => {
+      if (!this.validate(this.eTitle.value, this.eUrl.value)) {
+        return;
+      }
+
       this.dataSource.updatePlayItem(id,
         {
           title: this.eTitle.value,
@@ -84,6 +93,7 @@ export class NewPlayItemComponent implements OnInit {
           item.approved = 0;
           this.eTitle.setValue('');
           this.eUrl.setValue('');
+          this.editPlayItemInput.reset();
         });
     }).catch(action => { });
   }
@@ -113,5 +123,9 @@ export class NewPlayItemComponent implements OnInit {
 
   trackByItems(index: number, item: PlayItem): string {
     return btoa(item.id);
+  }
+
+  private validate(title: string, url: string): boolean {
+    return Boolean(title) && Boolean(url) && url.search(/https?:\/\/\w+/) === 0;
   }
 }

@@ -13,11 +13,16 @@ export class PlayListComponent implements OnInit {
 
   @Output()
   playItemSelected: EventEmitter<PlayItem> = new EventEmitter();
+  @Output()
+  playListReady: EventEmitter<PlayItem[]> = new EventEmitter();
 
   constructor(private dataSource: RestDataSource) { }
 
   ngOnInit(): void {
-    this.dataSource.getPlayList().subscribe(data => this.playList = data);
+    this.dataSource.getPlayList().subscribe(data => {
+      this.playList = data;
+      this.playListReady.emit(data);
+    });
   }
 
   loadVideo(title: string) {

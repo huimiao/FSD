@@ -18,7 +18,9 @@
     </div>
     <div class="col-lg-2 col-md-12">
       <div class="player-content">
-        <play-list #playList style="height: 100%" (playItemSelected)="playItemSelectedHandler($event)"></play-list>
+        <play-list #playList style="height: 100%" (playItemSelected)="playItemSelectedHandler($event)"
+          (playListReady)="playListReadyHandler($event)">
+        </play-list>
       </div>
     </div>
     <div class="col-lg-1 col-md-12"></div>

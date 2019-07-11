@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, Injectable, Output, EventEmitter } from '@angular/core';
-import { PlayItem } from 'src/app/service';
+import { PlayItem, Score } from 'src/app/service';
 
 @Component({
   selector: 'player-controls',
@@ -20,6 +20,8 @@ export class PlayerControllersComponent implements OnInit {
   toggleSpeakerClicked: EventEmitter<boolean> = new EventEmitter();
   @Output()
   progressBarClicked: EventEmitter<number> = new EventEmitter();
+  @Output()
+  thumbsClicked: EventEmitter<boolean> = new EventEmitter();
 
   @ViewChild('progressBar', { static: false })
   progressBarRef: ElementRef;
@@ -34,6 +36,16 @@ export class PlayerControllersComponent implements OnInit {
 
   stopped: boolean;
   muted: boolean;
+  selctedPlayItem: PlayItem;
+  currentScore: Score;
+
+  get socreKey(): string {
+    return `${this.selctedPlayItem.url}/score`;
+  }
+
+  get timeKey(): string {
+    return `${this.selctedPlayItem.url}/time`;
+  }
 
   get progressBar() {
     return this.progressBarRef.nativeElement;
@@ -57,12 +69,22 @@ export class PlayerControllersComponent implements OnInit {
 
   ngOnInit(): void {
     this.stopped = true;
+    this.currentScore = new Score();
   }
 
   loadPlayItem(playItem: PlayItem) {
     this.resetControls();
-    this.likeNumField.innerHTML = playItem.likes;
-    this.disLikeNumField.innerHTML = playItem.unlikes;
+    this.selctedPlayItem = playItem;
+
+    const sc: Score = this.loadScoreFromDB(this.socreKey);
+
+    if (!(sc.disLikeScore || sc.likeScore)) {
+      this.currentScore = new Score(playItem.likes, playItem.unlikes);
+    } else {
+      this.currentScore = sc;
+    }
+
+    this.saveToDB('playing', playItem.url);
   }
 
   startToPlay() {
@@ -77,6 +99,7 @@ export class PlayerControllersComponent implements OnInit {
 
   stopPlay() {
     this.resetControls();
+    this.stopped = false;
     this.stopToPlayClicked.emit(true);
   }
 
@@ -97,6 +120,7 @@ export class PlayerControllersComponent implements OnInit {
     }
 
     this.progressBar.value = percentage;
+    this.saveCurrentTimeToDB(currentTime);
     this.currentTime.innerHTML = this.formatTime(currentTime);
   }
 
@@ -121,5 +145,58 @@ export class PlayerControllersComponent implements OnInit {
     const to = e.offsetX;
     const width = e.target.offsetWidth;
     this.progressBarClicked.emit(to / width);
+  }
+
+  thumbsClickedHandler(type: string) {
+    if (type === 'like' || type === 'disLike') {
+      this.currentScore = this.saveScoreToDB(this.socreKey, type, new Score(this.selctedPlayItem.likes, this.selctedPlayItem.unlikes));
+    }
+  }
+
+  saveCurrentTimeToDB(time: number) {
+    this.saveToDB(this.timeKey, time.toString());
+  }
+
+  saveToDB(key: string, value: string) {
+    localStorage.setItem(key, value);
+  }
+
+  loadFromDB(key: string) {
+    const value = localStorage.getItem(key);
+    return value;
+  }
+
+  loadScoreFromDB(src: string) {
+    if (!src || src === '') {
+      return;
+    }
+
+    const score = this.loadFromDB(src);
+
+    return (score && JSON.parse(score)) || new Score();
+  }
+
+  saveScoreToDB(src: string, type: string, score: Score): Score {
+    if (!src || src === '' || !type) {
+      return;
+    }
+
+    let sc: Score = this.loadScoreFromDB(src);
+
+    if (!(sc.likeScore || sc.disLikeScore)) {
+      sc = score;
+    }
+    if (type === 'like') {
+      sc.likeScore += 1;
+    } else if (type === 'disLike') {
+      sc.disLikeScore += 1;
+    }
+
+    this.saveToDB(src, JSON.stringify(sc));
+    return sc;
+  }
+
+  lastPlayedVideo(): string {
+    return this.loadFromDB('playing') || '';
   }
 }

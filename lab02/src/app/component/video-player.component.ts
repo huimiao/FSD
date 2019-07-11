@@ -19,15 +19,23 @@ export class VideoPlayerComponent implements AfterViewInit {
 
   private player;
   private control: PlayerControllersComponent;
+  private playList;
 
   ngAfterViewInit(): void {
     this.player = this.playerView.playerWindow;
     this.control = this.playerControllersComponent;
+    this.playList = this.playListComponent;
   }
 
   playItemSelectedHandler(playItem: PlayItem) {
-    this.control.loadPlayItem(playItem);
     this.playerView.playingVideo = playItem.url;
+    this.player.load();
+    this.control.loadPlayItem(playItem);
+
+    const lastWatchingTime: string = this.control.loadFromDB(this.control.timeKey);
+    if (lastWatchingTime && isFinite(parseFloat(lastWatchingTime))) {
+      this.player.currentTime = parseFloat(lastWatchingTime);
+    }
   }
 
   startToPlayClickedHandler() {
@@ -39,8 +47,8 @@ export class VideoPlayerComponent implements AfterViewInit {
   }
 
   stopToPlayClickedHandler() {
-    this.player.pause();
     this.player.currentTime = 0;
+    this.player.play();
   }
 
   playCompletedHandler() {
@@ -101,6 +109,22 @@ export class VideoPlayerComponent implements AfterViewInit {
     const time = percent * this.player.duration;
     if (isFinite(time)) {
       this.player.currentTime = time;
+    }
+  }
+
+  playListReadyHandler(playItems: PlayItem[]) {
+    console.log(playItems);
+    let lastPlayedPlayItem: PlayItem;
+    const lastPlayedUrl = this.control.lastPlayedVideo();
+
+    if (lastPlayedUrl === '' && playItems.length !== 0) {
+      lastPlayedPlayItem = playItems[0];
+    } else {
+      lastPlayedPlayItem = playItems.filter(i => i.url === lastPlayedUrl)[0];
+    }
+
+    if (lastPlayedPlayItem) {
+      this.playList.loadVideo(lastPlayedPlayItem.title);
     }
   }
 }
