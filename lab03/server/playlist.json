@@ -1,0 +1,71 @@
+{
+  "youtube": [
+    {
+      "id": "U2FkaGd1cnUgYW5kIFBoeXNpY3M=",
+      "title": "Sadhguru and Physics",
+      "url": "http://127.0.0.1:3500/1.mp4",
+      "status": "added",
+      "approved": 1,
+      "likes": 26,
+      "unlikes": 6,
+      "currentStatus": "playing",
+      "exitplayprogress": 30
+    },
+    {
+      "id": "QW5ndWxhciA2IFR1dG9yaWFs",
+      "title": "Angular 6 Tutorial",
+      "url": "http://127.0.0.1:3500/2.mp4",
+      "status": "added",
+      "approved": 1,
+      "likes": 0,
+      "unlikes": 0,
+      "currentStatus": "paused",
+      "exitplayprogress": 0,
+      "Approved": 0
+    },
+    {
+      "id": "Tmlrb24gUDkwMCA4M1ggWm9vbQ==",
+      "title": "Nikon P900 83X Zoom",
+      "url": "http://127.0.0.1:3500/5.mp4",
+      "status": "added",
+      "approved": 1,
+      "likes": 17,
+      "unlikes": 10,
+      "currentStatus": "paused",
+      "exitplayprogress": 80,
+      "likeNum": 11,
+      "unlikeNum": 1
+    },
+    {
+      "id": "VW5kZXJzdGFuZGluZyBKYXZhc2NyaXB0",
+      "title": "Understanding Javascript",
+      "url": "http://127.0.0.1:3500/6.mp4",
+      "status": "edited",
+      "approved": 1,
+      "likes": 27,
+      "unlikes": 7,
+      "currentStatus": "stopped",
+      "exitplayprogress": 80
+    },
+    {
+      "approved": 1,
+      "likes": 0,
+      "unlikes": 0,
+      "currentStatus": "paused",
+      "exitplayprogress": 0,
+      "id": "dGVzdA==",
+      "title": "test",
+      "url": "https://video.pearvideo.com/mp4/adshort/20190721/cont-1580227-14157993_adpkg-ad_hd.mp4"
+    },
+    {
+      "approved": 1,
+      "likes": 0,
+      "unlikes": 0,
+      "currentStatus": "paused",
+      "exitplayprogress": 0,
+      "id": "dGVzdHRlc3R0ZXN0dGVzdHRlc3R0ZXN0dGVzdGRhZmRzZmRz",
+      "title": "testtesttesttesttesttesttestdafdsfds",
+      "url": "http://127.0.0.1:3500/5.mp4"
+    }
+  ]
+}

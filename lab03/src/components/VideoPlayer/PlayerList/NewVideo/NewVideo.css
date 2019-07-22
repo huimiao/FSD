@@ -1,0 +1,21 @@
+.modal_main {
+  width: 100%;
+}
+
+.form-control {
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1.5px solid grey;
+}
+
+button > span {
+  margin-left: 5px;
+}
+
+.mr-2 {
+  margin-right: .5rem!important;
+}
+
+.mr-1{
+  float: right;
+}

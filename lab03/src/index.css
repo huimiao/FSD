@@ -1,0 +1,22 @@
+ul,
+li {
+  display: inline-block;
+}
+
+.container {
+  padding-top: 1%;
+}
+
+li:hover {
+  background: gray;
+  border-radius: 0px;
+  color: #f03e3e;
+}
+
+.hidden {
+  display: none;
+}
+
+.container-fluid {
+  margin-top: 1%;
+}
