@@ -4,65 +4,84 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm run server`
+Start the fake rest api using json-server.
+
 ### `npm start`
 
-Runs the app in the development mode.<br>
+
+Runs the app in the development mode(above command[npm run server] must be run first).<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Evaluation Check
 
-### `npm run build`
+S.no	|	Activity	|	Check	|	Associate Remark
+---	|	---	|	---	|	---
+1	|	Created Video Player Parent Component	|	Done	|	
+2	|	Created Player Component as a child component of Video Player Component	|	Done	|	
+3	|	Created Controls Component as a child component of Video Player Component	|	Done	|	
+4	|	Created Playlist Component as a child component of Video Player Component	|	Done	|	
+5	|	Implemented Play button as one of the control in Controls Component	|	Done	|	
+6	|	Implemented Pause button as one of the control in Controls Component	|	Done	|	
+7	|	Implemented Volume Up button as one of the control in Controls Component	|	Done	|	
+8	|	Implemented Volume Down button as one of the control in Controls Component	|	Done	|	
+9	|	Implemented Reload button as one of the control in Controls Component	|	Done	|	
+10	|	Implemented Like button as one of the control in Controls Component	|	Done	|	
+11	|	Implemented Unlike button as one of the control in Controls Component	|	Done	|	
+12	|	Implemented Play button as one of the control in Controls Component	|	Done	|	
+13	|	If video is playing, the play button should be disabled	|	Done	|	
+14	|	If video is stopped/paused, the stop/paused button should be disabled	|	Done	|	
+15	|	You may use bootstrap glyphicons for icons in video player	|	Done	|	
+16	|	When page loads for the first time, the video must not start playing by default	|	Done	|	
+17	|	When the page loads after previous exit from the app, it must start with the video which was open when app exited in past.	|	Done	|	
+18	|	Clicking on volume up button should increase playback volume	|	Done	|	
+19	|	Clicking on volume down button shuld decrease the playback volume	|	Done	|	
+20	|	Clicking on reload button should start the video playback from start	|	Done	|	
+21	|	Mute/Unmute (headphone) is a toggle button. Clicking on it will be iteratively mute or unmute the sound in video playback.	|	Done	|	
+22	|	Progress bar is implemented using HTML5 progress bar element. Progress bar will change the value as per the percentage of video played.	|	Done	|	
+23	|	The value for number of likes and un-likes should be saved in local storage and retrieved from the same.	|	Done	|	
+24	|	Clicking on like and unlike should increase and decrease the number of likes and unlikes respectively. The values are coming from JSON file (accessed using FAKE Rest API)	|	Done	|	
+25	|	Portrait Mode - Playlist will go towards bottom when in portrait mode	|	Done	|	
+26	|	Clicking on item in the playlist should play the respective video in the video player, when in portrait mode	|	Done	|	
+27	|	React-Bootstrap is used to make the player responsive	|	Done	|	
+28	|	Videos are loaded in playlist by making a call to FAKE REST API created using npm package: json-server	|	Done	|	
+29	|	New Feature other than documented	|	Done	|	See below
+30	|	Input type is "url" to add new youtube url	|	Done	|	
+31	|	It should not accept bad url	|	Done	|	
+32	|	Each new URL which is added must be added to JSON file using FAKE REST API	|	Done	|	
+33	|	Each new URL which is added must be added to the list of URL's in the table below	|	Done	|	
+34	|	User should be able to edit the URL  using FAKE Rest  API	|	Done	|	
+35	|	User  should be able to delete the URL using FAKE Rest API	|	Done	|	
+36	|	Each URL which is added here must be available in Video Player component only after approval	|	Done	|	
+37	|	User will approve the URL by clicking on the link in the table. If the video plays in the new browser window, then it is approved by the user.	|	Done	|	
+38	|	Once video is approved, approve button is disabled.	|	Done	|	
+39	|	Approve button is enabled again only if video URL is edited	|	Done	|	
+40	|	New Feature other than documented	|	Done	|	See below
+						
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## New Feature other than documented
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+1. Click the progress bar, video will play start from there
+2. When click the video window, video will be stopped or pause/stopped, with styled play button
+3. Better appearence
+4. Playing list will roll from right to left on the selected video
+5. Selected playing list item is highted
+6. Hover the play list and buttons will be highted.
+7. Show the video play time/total time
+8. Video will play from where the last place where leaved
+9. Div as button
+10. Rudux, immutable and some other middleware is used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![1](https://github.com/huimiao/FSD/raw/master/lab03/screenshot/1.jpg)
 
-### `npm run eject`
+![2](https://github.com/huimiao/FSD/raw/master/lab03/screenshot/2.jpg)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![3](https://github.com/huimiao/FSD/raw/master/lab03/screenshot/3.jpg)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![4](https://github.com/huimiao/FSD/raw/master/lab03/screenshot/4.jpg)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![5](https://github.com/huimiao/FSD/raw/master/lab03/screenshot/5.jpg)
