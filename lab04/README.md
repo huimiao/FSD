@@ -2,8 +2,6 @@
 
 ### Build on Java 8 on IDEA
 
-### Lombok is used in project
-
 ### Jave 8 Lambda, stream are used in project.
 
 
