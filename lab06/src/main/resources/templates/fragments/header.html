@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>FSD Course Center</title>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-sm navbar-default fixed-top navbar-light" th:fragment="header">
+    <div class="container">
+        <a href="/" class="navbar-brand">Lab06</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText" th:fragment="header">
+            <ul class="navbar-nav mr-auto d-md-flex">
+                <li sec:authorize="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')" class="nav-item"><a class="nav-link"
+                                                                                                      href="/tutorials">Tutorials </a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ANONYMOUS')" class="nav-item"><a class="nav-link"
+                                                                                  th:href="@{/register}"> Register </a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ANONYMOUS')" class="nav-item"><a class="nav-link" th:href="@{/login}">
+                    Login </a></li>
+                <li sec:authorize="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')" class="nav-item"><a class="nav-link"
+                                                                                                      th:href="@{/logout}">
+                    Logout </a></li>
+                <li sec:authorize="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')" class="nav-item"><a class="nav-link"
+                                                                                                      th:href="@{/account}">
+                    Account
+                    Update </a></li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item"><a class="nav-link"
+                                                                              th:href="@{/admin/}">Admin</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</body>

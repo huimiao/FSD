@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" th:href="@{/css/sigin.css}"/>
+</head>
+<body class="text-center">
+<div th:replace="fragments/header :: header"></div>
+
+<div class="form-signin">
+    <form th:action="@{/login}" method="post">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <div class="alert alert-danger" role="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+        <label for="username" class="sr-only">Username</label>
+        <input type="input" id="username" name="username" class="form-control" placeholder="Username" required
+               autofocus>
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+        <div class="row">
+            <div class="col-9">
+                <input id="captcha" name="captcha" type="input" class="form-control" placeholder="Captcha">
+            </div>
+            <div class="col-3">
+                <img src="/captcha?a=captcha" onclick="this.src=this.src+'&k='+Math.random();">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <input type="checkbox" class="form-check-input" id="remember" name="remember-me">
+                <label for="remember">Remember me</label>
+            </div>
+            <div class="col-6">
+            </div>
+        </div>
+        <button class="btn btn-lg btn-info btn-block " type="submit">Sign in</button>
+    </form>
+</div>
+</body>
+</html>
