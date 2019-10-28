@@ -1,0 +1,17 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+    register-with-eureka: true
+    fetch-registry: true
+spring:
+  datasource:
+    url: ${ACCOUNT_DS_URL:jdbc:mysql://localhost:3306/account?useSSL=false}
+    username: ${ACCOUNT_DS_USERID:root}
+    password: ${ACCOUNT_DS_PASSWORD:rootpassword}
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
