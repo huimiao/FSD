@@ -10,9 +10,9 @@ import {NotificationComponent} from '../../component/notification/notification.c
 import {TrainingListItem} from '../../model/training-list-item';
 
 @Component({
-  selector: 'app-mentor-current-trainings',
-  templateUrl: './mentor-current-trainings.component.html',
-  styleUrls: ['./mentor-current-trainings.component.css']
+  selector: 'app-mentor-completed-trainings',
+  templateUrl: './mentor-completed-trainings.component.html',
+  styleUrls: ['./mentor-completed-trainings.component.css']
 })
 export class MentorCompletedTrainingsComponent implements OnInit {
 
