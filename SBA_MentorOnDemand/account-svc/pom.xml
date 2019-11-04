@@ -50,15 +50,6 @@
         <dependency>
             <groupId>com.ibm.fsd.mod</groupId>
             <artifactId>account-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.fsd.mod</groupId>
-            <artifactId>account-api</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.fsd.mod</groupId>
-            <artifactId>account-api</artifactId>
             <version>1.0</version>
         </dependency>
     </dependencies>

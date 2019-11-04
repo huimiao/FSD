@@ -1,0 +1,14 @@
+{
+  "name": "MOD - Front end server",
+  "version": "1.0",
+  "description": "MOD - Front end server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "huimiao@cn.ibm.com",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

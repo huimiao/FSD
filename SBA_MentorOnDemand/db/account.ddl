@@ -10,15 +10,12 @@ CREATE TABLE `ACCOUNT`.`USERS`
     `password`               VARCHAR(256) NOT NULL,
     `first_name`             VARCHAR(128) NOT NULL DEFAULT '',
     `last_name`              VARCHAR(128) NOT NULL DEFAULT '',
-    `contact_number`         VARCHAR(32)  NOT NULL DEFAULT '000000',
+    `contact_number`         bigint       NOT NULL DEFAULT 0,
     `reg_datetime`           TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `reg_code`               VARCHAR(32)  NULL     DEFAULT '',
     `active`                 BOOLEAN      NOT NULL DEFAULT true,
-    `years_of_experience`    INT                   DEFAULT 0,
-    `linkedin_url`           VARCHAR(256) NULL     DEFAULT '',
     `confirmed_signup`       BOOLEAN      NOT NULL DEFAULT false,
     `force_reset_password`   BOOLEAN               DEFAULT false,
-    `rest_password_datetime` DATE                  DEFAULT '1900-01-01 00:00:00',
+    `rest_password_datetime` TIMESTAMP             DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     UNIQUE INDEX `username_UNIQUE` (`user_name` ASC)
 )
@@ -55,13 +52,13 @@ alter table `ACCOUNT`.`user_role`
 
 
 INSERT INTO `account`.`users`(`user_name`, `password`, `first_name`, `last_name`, `contact_number`, `reg_datetime`,
-                              `active`, `years_of_experience`, `linkedin_url`, `confirmed_signup`)
-VALUES ('huimiao@cn.ibm.com', '123456', 'Hui', 'Miao', '123456789', current_timestamp, 1, 10, '', 1);
+                              `active`, `confirmed_signup`)
+VALUES ('huimiao@cn.ibm.com', '123456', 'Hui', 'Miao', '123456789', current_timestamp, 1, 1);
 
 
 INSERT INTO `account`.`roles`(`role`)
-values('ROLE_USER');
+values ('ROLE_USER');
 INSERT INTO `account`.`roles`(`role`)
-values('ROLE_MENTOR');
+values ('ROLE_MENTOR');
 INSERT INTO `account`.`roles`(`role`)
-values('ROLE_ADMIN');
+values ('ROLE_ADMIN');

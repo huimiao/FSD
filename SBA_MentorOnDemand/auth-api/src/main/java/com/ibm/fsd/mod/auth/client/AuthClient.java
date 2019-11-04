@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient(name = AuthConstant.SERVICE_NAME, path = "/api/v1/auth")
+@FeignClient(name = AuthConstant.SERVICE_NAME, path = "/v1")
 public interface AuthClient {
     @PostMapping("/jwt/{token}")
     GenericAuthResponse verifyJwtToken(@PathVariable String token);

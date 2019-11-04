@@ -10,18 +10,22 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.Email;
 
 @RestController
-@RequestMapping("/api/v1/account")
+@RequestMapping("/v1")
 @Validated
 public class AccountController {
     @Autowired
     private AccountDetailsService accountDetailsService;
 
-    @GetMapping("/")
-    public String hello() {
-        return "hello account";
+    @GetMapping("/account/{username}")
+    public GenericAccountResponse getAccountProfileByUsername(@PathVariable @Email(message = "{email.format.error}") String username) {
+        UserDto userDto = accountDetailsService.getUserProfileWithoutSensitiveInfo(username);
+
+        GenericAccountResponse response = new GenericAccountResponse(userDto);
+
+        return response;
     }
 
-    @PostMapping("/{username}")
+    @PostMapping("/account/{username}")
     public GenericAccountResponse getAccountDetailByUsername(@PathVariable @Email(message = "{email.format.error}") String username) {
 
         UserDto userDto = accountDetailsService.getUserDetail(username);
@@ -31,11 +35,11 @@ public class AccountController {
         return response;
     }
 
-    @PostMapping(value = "/register",
+    @PostMapping(value = "/signup",
             produces = "application/json;charset=UTF-8",
             consumes = "application/json;charset=UTF-8")
     @ResponseBody
-    public GenericAccountResponse register(@RequestBody @Validated UserDto user) {
+    public GenericAccountResponse signup(@RequestBody @Validated UserDto user) {
 
         UserDto userDto = accountDetailsService.saveUser(user);
 

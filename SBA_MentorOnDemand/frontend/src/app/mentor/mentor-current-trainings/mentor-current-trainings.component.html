@@ -1,0 +1,59 @@
+<app-header (searchConditionChanged)="setSearchCondition($event)"></app-header>
+
+<div class="card-columns" *ngIf="dataReady; else nodata">
+  <ng-container *ngFor="let training of trainings | filter:searchCondition">
+    <div class="card">
+      <div class="card-header bg-light">
+        <ng-template #t let-fill="fill">
+          <span class="star" [class.full]="fill === 100">
+            <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+          </span>
+        </ng-template>
+        <ngb-rating rate="{{training.avgRating}}" [starTemplate]="t" [readonly]="true"
+                    max="10"></ngb-rating>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{training.musername}}</h5>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <span class="font-weight-bold"> Technology:</span> {{training.sname}}
+            </div>
+            <div class="col-sm">
+              <span class="font-weight-bold">Years of Experience:</span> {{training.yearOfExp}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <span class="font-weight-bold">Start Date:</span> {{training.startDate}}
+            </div>
+            <div class="col-sm">
+              <span class="font-weight-bold">Start Time:</span> {{training.startTime}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <span class="font-weight-bold">End Date:</span> {{training.endDate}}
+            </div>
+            <div class="col-sm">
+              <span class="font-weight-bold">End Time:</span> {{training.endTime}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <span class="font-weight-bold">Fee:</span> <span>$</span>{{training.fee}}
+            </div>
+            <div class="col-sm">
+              <span class="font-weight-bold">Registered:</span> {{training.registeredNum}}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #nodata>
+  no data
+</ng-template>

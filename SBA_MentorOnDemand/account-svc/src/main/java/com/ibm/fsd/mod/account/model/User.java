@@ -1,25 +1,31 @@
 package com.ibm.fsd.mod.account.model;
 
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
+import javax.validation.constraints.Positive;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "users")
+@Table(name = "users",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"user_name"}))
+@DynamicInsert
+@Builder
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Email(message = "{email.format.error}")
     @NotBlank
-    @Column(name = "user_name")
+    @Column(name = "user_name", length = 128)
     private String username;
     @NotBlank
     private String password;
@@ -29,24 +35,18 @@ public class User {
     @NotBlank
     @Column(name = "last_name")
     private String lastName = "";
-    @NotBlank
+    @Positive
     @Column(name = "contact_number")
-    private String contactNumber = "123456789";
+    private Long contactNumber = 123456789L;
     @Column(name = "reg_datetime")
-    private Date regDateTime;
-    @Column(name = "reg_code")
-    private String regCode = "";
+    private Timestamp regDateTime;
     private Boolean active = true;
-    @Column(name = "years_of_experience")
-    private int yearsOfExperience = 0;
-    @Column(name = "linkedin_url")
-    private String linkedinUrl = "";
     @Column(name = "confirmed_signup")
     private Boolean confirmedSignup = true;
     @Column(name = "force_reset_password")
     private Boolean forceRestPassword = false;
     @Column(name = "rest_password_datetime")
-    private Date restPasswordDateTime;
+    private Timestamp restPasswordDateTime;
 
     @ManyToMany
     @JoinTable(

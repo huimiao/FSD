@@ -8,19 +8,11 @@ import com.ibm.fsd.mod.account.repository.RoleRepository;
 import com.ibm.fsd.mod.account.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service("accountDetailService")
 @RequiredArgsConstructor
@@ -33,34 +25,11 @@ public class AccountDetailsService {
 
     private final RoleRepository roleRepository;
 
-    /**
-     * refer https://stackoverflow.com/questions/11746499/how-to-solve-the-failed-to-lazily-initialize-a-collection-of-role-hibernate-ex
-     *
-     * @param username
-     * @return
-     * @throws UsernameNotFoundException
-     */
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true, noRollbackFor = Exception.class)
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        User user = userRepository.findUserByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("UsernameNotFoundException");
-        }
-
-        List<Role> roles = user.getRoles();
-        roles.forEach(role -> grantedAuthorities.add(new SimpleGrantedAuthority(role.getRole())));
-
-        return new org.springframework.security.core.userdetails.User(user.getUsername(),
-                user.getPassword(),
-                grantedAuthorities);
-    }
-
     @Transactional(rollbackFor = Exception.class)
     public UserDto saveUser(UserDto user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Role role = roleRepository.findById(10000L).get();
-
+        String isMentor = user.getIsMentor();
+        Role role = roleRepository.findRoleByRole("Y".equals(isMentor) ? "ROLE_MENTOR" : "ROLE_USER").get();
         User userModel = this.convertToModel(user);
         userModel.setRoles(new ArrayList<>());
         userModel.getRoles().add(role);
@@ -68,14 +37,31 @@ public class AccountDetailsService {
     }
 
     public UserDto getUserDetail(String username) {
-        return this.convertToDto(userRepository.findUserByUsername(username));
+        User user = userRepository.findUserByUsername(username);
+        if (user != null) {
+            return this.convertToDto(user);
+        } else {
+            return null;
+        }
     }
 
+    public UserDto getUserProfileWithoutSensitiveInfo(String username) {
+        UserDto userDto = getUserDetail(username);
+        userDto.setPassword("xxxx");
+
+        return userDto;
+    }
+
+
     private UserDto convertToDto(User user) {
+        if (user == null)
+            return null;
         return modelMapper.map(user, UserDto.class);
     }
 
     private User convertToModel(UserDto userDto) {
+        if (userDto == null)
+            return null;
         return modelMapper.map(userDto
                 , User.class);
     }

@@ -1,0 +1,84 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">New Training</h4>
+  <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="newTrainingInput">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text bg-success text-white" id="technology_new_label">Technology</span>
+      </div>
+      <select class="custom-select mr-sm-2" id="technology_new" formControlName="technology_new">
+        <option selected>Choose...</option>
+        <ng-container *ngFor="let tech of technologiesNew;">
+          <option value={{tech.name}}>{{tech.name}}</option>
+        </ng-container>
+      </select>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text bg-success text-white" id="yearOfExp_new_lable">Year of Experience</span>
+      </div>
+      <select class="custom-select mr-sm-2" id="yearOfExp_new" formControlName="yearOfExp_new">
+        <option selected>Choose...</option>
+        <ng-container *ngFor="let y of yearOfExpNew;">
+          <option value={{y}}>{{y}}</option>
+        </ng-container>
+      </select>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text bg-success text-white" id="fee_lable">Fee</span>
+      </div>
+      <input id="fee" class="form-control" placeholder="Fee" formControlName="fee" autocomplete="off">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text bg-success text-white" id="profile_lable">Profile</span>
+      </div>
+      <input id="profile" class="form-control" placeholder="Profile" formControlName="profile" autocomplete="off">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text bg-success text-white" id="startDate_label">Start Date</span>
+      </div>
+      <input class="form-control" placeholder="yyyy-mm-dd"
+             formControlName="startDate" [(ngModel)]="startDate" ngbDatepicker #startDatef="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="startDatef.toggle()" type="button"></button>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text bg-success text-white" id="startTime_label">Start Time</span>
+      </div>
+
+      <ngb-timepicker [(ngModel)]="startTime" formControlName="startTime"></ngb-timepicker>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text bg-success text-white" id="endDate_label">End Date</span>
+      </div>
+      <input class="form-control" placeholder="yyyy-mm-dd"
+             formControlName="endDate" [(ngModel)]="endDate" ngbDatepicker #endDatef="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="endDatef.toggle()" type="button"></button>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text bg-success text-white" id="endTime_label">End Time</span>
+      </div>
+      <ngb-timepicker [(ngModel)]="endTime" formControlName="endTime"></ngb-timepicker>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+  <button type="button" ngbAutofocus class="btn btn-danger" (click)="save()">Done</button>
+</div>

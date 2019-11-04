@@ -1,0 +1,14 @@
+EUREKA_URL: http://localhost:8060/eureka
+ACCOUNT_DS_URL: jdbc:mysql://localhost:3306/account?useSSL=false
+ACCOUNT_DS_USERID: root
+ACCOUNT_DS_PASSWORD: rootpassword
+TECHNOLOGY_DS_URL: jdbc:mysql://localhost:3306/technology?useSSL=false
+TECHNOLOGY_DS_USERID: root
+TECHNOLOGY_DS_PASSWORD: rootpassword
+SCHOOL_DS_URL: jdbc:mysql://localhost:3306/school?useSSL=false
+SCHOOL_DS_USERID: root
+SCHOOL_DS_PASSWORD: rootpassword
+fsd:
+  mod:
+    signing-secret: qazwsx123
+    domain: localhost

@@ -1,15 +1,20 @@
 package com.ibm.fsd.mod.account.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import java.util.Date;
+import javax.validation.constraints.Positive;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UserDto {
     private Long id;
     @Pattern(regexp = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+", message = "Please input a valid Email.")
@@ -21,15 +26,13 @@ public class UserDto {
     private String firstName = "";
     @NotBlank
     private String lastName = "";
-    @NotBlank
-    private String contactNumber = "123456789";
-    private Date regDateTime;
-    private String regCode = "";
+    @Positive
+    private Long contactNumber = 123456789L;
+    private Timestamp regDateTime;
     private Boolean active = true;
-    private int yearsOfExperience = 0;
-    private String linkedinUrl = "";
     private Boolean confirmedSignup = true;
     private Boolean forceRestPassword = false;
-    private Date restPasswordDateTime;
+    private Timestamp restPasswordDateTime;
+    private String isMentor = "N";
     List<RoleDto> roles;
 }

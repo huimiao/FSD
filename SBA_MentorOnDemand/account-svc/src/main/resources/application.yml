@@ -10,8 +10,10 @@ spring:
     username: ${ACCOUNT_DS_USERID:root}
     password: ${ACCOUNT_DS_PASSWORD:rootpassword}
     driver-class-name: com.mysql.jdbc.Driver
+    data: classpath:/import.sql
+    initialization-mode: always
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create-drop
       database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
