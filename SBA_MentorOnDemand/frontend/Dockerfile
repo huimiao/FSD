@@ -6,6 +6,8 @@ COPY server/package*.json ./
 
 RUN npm install
 
+RUN npm install express
+
 COPY server .
 
 EXPOSE 8080
