@@ -1,7 +1,9 @@
+spring:
+  profiles: dev
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+      defaultZone: ${EUREKA_URL}
     register-with-eureka: true
     fetch-registry: true
 zuul:
@@ -9,3 +11,102 @@ zuul:
   sensitive-headers:
   connect-timeout-millis: 60000
   socket-timeout-millis: 60000
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude:
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: ALWAYS
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+        isolation:
+          thread:
+            timeoutInMilliseconds: 80000
+mod:
+  filter:
+    mentor:
+      -
+        method: POST
+        uri: /api/training/v1/training
+      -
+        method: GET
+        uri: /api/training/v1/training/mentor
+    user:
+      -
+        method: GET
+        uri: /api/training/v1/training/rating/*/*
+      -
+        method: POST
+        uri: /api/training/v1/training/user
+      -
+        method: POST
+        uri: /api/training/v1/training/*/*
+
+
+---
+spring:
+  profiles: prod
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL}
+    register-with-eureka: true
+    fetch-registry: true
+zuul:
+  prefix: /api
+  sensitive-headers:
+  connect-timeout-millis: 60000
+  socket-timeout-millis: 60000
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude:
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: ALWAYS
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+        isolation:
+          thread:
+            timeoutInMilliseconds: 80000
+mod:
+  filter:
+    mentor:
+      -
+        method: POST
+        uri: /api/training/v1/training
+      -
+        method: GET
+        uri: /api/training/v1/training/mentor
+    user:
+      -
+        method: GET
+        uri: /api/training/v1/training/rating/*/*
+      -
+        method: GET
+        uri: /api/training/v1/training/user
+      -
+        method: POST
+        uri: /api/training/v1/training/*/*
+

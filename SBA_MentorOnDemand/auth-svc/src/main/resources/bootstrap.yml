@@ -1,5 +1,18 @@
-server:
-  port: 8040
+spring:
+  profiles:
+    active: dev
+
+---
 spring:
   application:
     name: auth
+  profiles: dev
+server:
+  port: 8040
+---
+spring:
+  application:
+    name: auth
+  profiles: prod
+server:
+  port: 8040

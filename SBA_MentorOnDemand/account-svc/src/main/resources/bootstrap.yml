@@ -1,5 +1,18 @@
-server:
-  port: 8081
+spring:
+  profiles:
+    active: dev
+---
 spring:
   application:
     name: account
+  profiles: dev
+server:
+  port: 8081
+
+---
+spring:
+  application:
+    name: account
+  profiles: prod
+server:
+  port: 8081

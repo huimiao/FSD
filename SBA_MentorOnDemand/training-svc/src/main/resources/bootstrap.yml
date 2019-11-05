@@ -1,6 +1,19 @@
-server:
-  port: 8071
+spring:
+  profiles:
+    active: dev
+
+---
 spring:
   application:
     name: training
+  profiles: dev
+server:
+  port: 8071
 
+---
+spring:
+  application:
+    name: training
+  profiles: prod
+server:
+  port: 8071

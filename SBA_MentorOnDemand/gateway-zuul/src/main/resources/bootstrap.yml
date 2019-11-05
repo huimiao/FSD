@@ -1,5 +1,19 @@
-server:
-  port: 8000
 spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
   application:
     name: gateway
+server:
+  port: 8000
+
+---
+spring:
+  profiles: prod
+  application:
+    name: gateway
+server:
+  port: 9000

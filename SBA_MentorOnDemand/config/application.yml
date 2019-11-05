@@ -1,4 +1,5 @@
 EUREKA_URL: http://localhost:8060/eureka
+EUREKA_PORT: 8060
 ACCOUNT_DS_URL: jdbc:mysql://localhost:3306/account?useSSL=false
 ACCOUNT_DS_USERID: root
 ACCOUNT_DS_PASSWORD: rootpassword

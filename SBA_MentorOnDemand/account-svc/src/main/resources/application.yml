@@ -1,10 +1,5 @@
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
-    register-with-eureka: true
-    fetch-registry: true
 spring:
+  profiles: dev
   datasource:
     url: ${ACCOUNT_DS_URL:jdbc:mysql://localhost:3306/account?useSSL=false}
     username: ${ACCOUNT_DS_USERID:root}
@@ -14,6 +9,46 @@ spring:
     initialization-mode: always
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
       database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+    register-with-eureka: true
+    fetch-registry: true
+logging:
+  level:
+    com:
+      ibm:
+        fsd:
+          mod: debug
+---
+spring:
+  profiles: prod
+  datasource:
+    url: ${ACCOUNT_DS_URL:jdbc:mysql://localhost:3306/account?useSSL=false}
+    username: ${ACCOUNT_DS_USERID:root}
+    password: ${ACCOUNT_DS_PASSWORD:rootpassword}
+    driver-class-name: com.mysql.jdbc.Driver
+    data: classpath:/import.sql
+    initialization-mode: always
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+    register-with-eureka: true
+    fetch-registry: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+
+logging:
+  level:
+    com:
+      ibm:
+        fsd:
+          mod: debug
